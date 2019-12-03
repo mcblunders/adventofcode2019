@@ -28,10 +28,20 @@ def manhattan_distance(coord):
 grid1 = draw_grid(wire1)
 grid2 = draw_grid(wire2)
 intersections = list(set(grid1) & set(grid2))
-
+#PART ONE
 min_distance = manhattan_distance(intersections[0])
 for distance in intersections:
     if manhattan_distance(distance) < min_distance and manhattan_distance(distance) >0 :
         min_distance = manhattan_distance(distance)
 
 print(min_distance)
+print(len(intersections))
+
+crawls = []
+for point in intersections:
+    wire1_journey = grid1.index(point)
+    wire2_journey = grid2.index(point)
+    if (wire1_journey>0 or wire2_journey>0):
+        crawls.append((wire1_journey + wire2_journey))
+min_crawl = min(crawls)
+print(min_crawl)
