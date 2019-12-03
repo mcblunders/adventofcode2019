@@ -7,81 +7,34 @@ with open('wire1.txt') as f1:
 with open('wire2.txt') as f2:
     wire2 = f2.read().split(',')
 
+print("Loaded data")
+def movement(direction,start):
+    set_dir = {'U': (0,1), 'D': (0,-1), 'L': (-1,0), 'R': (1,0)}
+    start[0] += set_dir[direction][0]
+    start[1] += set_dir[direction][1]
+    return start
+
 def draw_grid(wire):
-    grid = [[0,0]]
-    loc = [0,0]
-    for code in wire:
-        d = code[0]
-        mag = int(code[1:])
-        if d == 'R':
-            while mag > 0:
-                grid.append([loc[0]+1,loc[1]])
-                loc[0]+= 1
-                mag -= 1
-        if d == 'L':
-            while mag > 0:
-                grid.append([loc[0]-1,loc[1]])
-                loc[0]-= 1
-                mag -= 1
-        if d == 'U':
-            while mag > 0:
-                grid.append([loc[0],loc[1]+1])
-                loc[1]+= 1
-                mag -= 1
-        if d == 'D':
-            while mag > 0:
-                grid.append([loc[0],loc[1]-1])
-                loc[1]-= 1
-                mag -= 1
-    return grid
-
-def find_intersects(wire,other_grid):
-    grid = [[0,0]]
-    loc = [0,0]
-    for code in wire:
-        d = code[0]
-        mag = int(code[1:])
-        if d == 'R':
-            while mag > 0:
-                if [loc[0]+1,loc[1]] in other_grid:
-                    grid.append([loc[0]+1,loc[1]])
-                loc[0]+= 1
-                mag -= 1
-        if d == 'L':
-            while mag > 0:
-                if [loc[0]-1,loc[1]] in other_grid:
-                    grid.append([loc[0]-1,loc[1]])
-                loc[0]-= 1
-                mag -= 1
-        if d == 'U':
-            while mag > 0:
-                if [loc[0],loc[1]+1]  in other_grid:
-                    grid.append([loc[0],loc[1]+1])
-                loc[1]+= 1
-                mag -= 1
-        if d == 'D':
-            while mag > 0:
-                if [loc[0],loc[1]-1] in other_grid:
-                    grid.append([loc[0],loc[1]-1])
-                loc[1]-= 1
-                mag -= 1
-    return grid
-
-print(len(wire1))
+    grid = []
+    newpos = [0,0]
+    grid1.append(tuple(newpos))
+    for bit in wire:
+        for i in range(0,int(bit[1:])):
+            newpos = movement(bit[0],newpos)
+            grid1.append(tuple(newpos))
+    return grid1
+    
+def manhattan_distance(coord):
+    return abs(coord[0])+abs(coord[1])
 
 
 grid1 = draw_grid(wire1)
+grid2 = draw_grid(wire2)
+intersections = list(set(grid1) & set(grid2))
 
-intersections = find_intersects(wire2,grid1)
-for loc in grid1:
-    if loc in grid2 and loc != [0,0]:
-        intersections.append(loc)
-print(intersections)
+min_distance = manhattan_distance(intersections[0])
+for distance in intersections:
+    if manhattan_distance(distance) < min_distance and manhattan_distance(distance) >0 :
+        min_distance = manhattan_distance(distance)
 
-intersection1 = intersections[0]
-distance = abs(intersection1[0]) + abs(intersection1[1])
-
-for intersection in intersections:
-    if abs(intersection[0]) + abs(intersection[1]) < distance:
-        distance = sum(intersection)
-print(distance)
+print(min_distance)
