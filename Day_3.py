@@ -14,12 +14,12 @@ def movement(direction,start):
 def draw_grid(wire):
     grid = []
     newpos = [0,0]
-    grid1.append(tuple(newpos))
+    grid.append(tuple(newpos))
     for bit in wire:
         for i in range(0,int(bit[1:])):
             newpos = movement(bit[0],newpos)
-            grid1.append(tuple(newpos))
-    return grid1
+            grid.append(tuple(newpos))
+    return grid
 
 def manhattan_distance(coord):
     return abs(coord[0])+abs(coord[1])
