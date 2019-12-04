@@ -35,7 +35,7 @@ for distance in intersections:
         min_distance = manhattan_distance(distance)
 
 print(min_distance)
-print(len(intersections))
+print(len(intersections))   
 
 crawls = []
 for point in intersections:
