@@ -1,4 +1,5 @@
-### DAY FIVE
+# My solution to the problem posted at https://adventofcode.com/2019/day/5
+
 def test1():
     testInput = [1,9,10,3,2,3,11,0,99,30,40,50]
     return testInput
@@ -84,7 +85,7 @@ while i< len(Intcode):
     if modes[-1] != 0:
         print("Non zero position mode!")
     do,params = findOpcode(code)
-    if do == 'sum':
+    if do == 'sum': 
         Intcode[Intcode[i+3]] = findNum(i+1, mode = modes[0]) + findNum(i+2, mode = modes[1])
     elif do == 'multiply':
         Intcode[Intcode[i+3]] = findNum(i+1, mode = modes[0]) * findNum(i+2, mode = modes[1])

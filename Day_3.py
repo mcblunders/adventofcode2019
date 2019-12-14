@@ -1,3 +1,5 @@
+# My solution to the problem posted at https://adventofcode.com/2019/day/3
+
 with open('wire1.txt') as f1:
     wire1 = f1.read().split(',')
 

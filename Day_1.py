@@ -1,6 +1,6 @@
-import math
-# Specifically, to find the fuel required for a module, take its mass, divide by three, round down, and subtract 2.
+# My solution to the problem posted at https://adventofcode.com/2019/day/1
 
+import math
 masses = []
 
 with open('c:/Users/MiaHatton/Documents/Python Scripts/Advent of Code 2019/masses.txt') as f:
