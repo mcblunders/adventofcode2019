@@ -1,4 +1,4 @@
-# Problem posted at 
+# Problem posted at https://adventofcode.com/2019/day/8/
 # For example, given an image 3 pixels wide and 2 pixels tall, 
 # the image data 123456789012 corresponds to the following image layers:
 #Layer 1: 123
