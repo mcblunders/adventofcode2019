@@ -1,4 +1,5 @@
-### DAY SEVEN
+# DAY SEVEN PART 2 - UNFINISHED
+# https://adventofcode.com/2019/day/7
 from itertools import permutations
 
 def ampSoftware():
